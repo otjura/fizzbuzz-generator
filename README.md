@@ -1,0 +1,1 @@
+Application generates switch-case fizzbuzzer in Java. Tada!
