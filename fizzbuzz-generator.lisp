@@ -27,4 +27,14 @@
 					       ind8 ind4 x prnt (fizzbuzz x) ind8 ind8 #\linefeed)))
     (if (> x 0)
 	(generate-fizzbuzz (1- x) nil str)
-    (setf str (concatenate 'string str (format nil "~a}~%~a}~%}" ind8 ind4))))))
+	(setf str (concatenate 'string str (format nil "~a}~%~a}~%}" ind8 ind4))))))
+
+(defun to-file (txt)
+  (with-open-file (*standard-output* "FizzBuzz.java" :direction :output :if-exists :supersede)
+    (princ txt *standard-output*)))
+
+(defun main ()
+  (princ "Give number to fizzbuzz: ")
+  (let ((x (read)))
+    (to-file (generate-fizzbuzz x)))
+  t)
